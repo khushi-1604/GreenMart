@@ -94,7 +94,7 @@
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       padding: 30px;
     }
@@ -116,6 +116,12 @@
       width: 100%;
       height: 180px;
       object-fit: cover;
+    }
+    .product-card model-viewer {
+      width: 100%;
+      height: 220px;
+      border-radius: 20px;
+      background: #f5f5f5;
     }
 
     .product-content {
@@ -141,7 +147,7 @@
       font-weight: bold;
       font-size: 20px;
       color: #2e7d32;
-      margin-bottom: 10px;
+      margin-bottom: 1px;
     }
 
     .features {
@@ -152,6 +158,7 @@
 
     .eco-label {
       position: absolute;
+      z-index: 1;
       top: 10px;
       right: 10px;
       background: #66bb6a;
@@ -161,19 +168,202 @@
       border-radius: 12px;
       font-weight: bold;
     }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .confirm {
+      background: #2e7d32;
+      color: white;
+    }
+
+    .cancel {
+      background: #ccc;
+    }
+    .eco-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #66bb6a;
+  color: white;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.discount-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(90deg, #ff7043, #ef5350);
+  color: white;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.green-credit {
+  position: absolute;
+  bottom: 60px;
+  left: 12px;
+  background: #aed581;
+  color: #1b5e20;
+  font-size: 10px;
+  padding: 4px 1px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.eco-score-bar {
+  margin-top: 12px;
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.eco-score-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #81c784, #43a047);
+  border-radius: 10px;
+}
+
+.eco-score-text {
+  font-size: 12px;
+  color: #388e3c;
+  
+}
+.green-breakdown {
+  position: relative;
+  top: -80px;
+  left: 110px;
+  
+  text-align: center;
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+.green-pie {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-90deg);
+  margin: auto;
+}
+
+.green-pie circle {
+  fill: none;
+  stroke-width: 6;
+}
+
+.bg {
+  stroke: #eee;
+}
+
+.organic {
+  stroke: #66bb6a;
+}
+
+.recyclable {
+  stroke: #81c784;
+}
+
+.plantbased {
+  stroke: #aed581;
+}
+
+.center-label {
+  fill: #2e7d32;
+  font-size: 10px;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+
+.labels {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.labels .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.organic-dot { background: #66bb6a; }
+.recyclable-dot { background: #81c784; }
+.plantbased-dot { background: #aed581; }
+
   </style>
 </head>
 <body>
   <nav>
     <h1>GreenMart</h1>
-    <ul>
+    <ul style="text-decoration: none;">
       <li>Home</li>
-      <li>Refill</li>
-      <li>Recycle</li>
-      <li>Wallet</li>
-      <li>Login</li>
+      <li onclick="location.href='profile.html'">Profile</li>
+      <li onclick="showLogoutConfirm()">Logout</li>
     </ul>
   </nav>
+
+  <div class="modal" id="logoutModal">
+    <div class="modal-content">
+      <h2>Are you sure you want to logout?</h2>
+      <button class="confirm" onclick="confirmLogout()">Yes, Logout</button>
+      <button class="cancel" onclick="closeLogoutModal()">Cancel</button>
+    </div>
+  </div>
 
   <header>
     <div class="search-bar">
@@ -184,100 +374,393 @@
       <div class="chip" onclick="filterCategory('Groceries', this)">Groceries</div>
       <div class="chip" onclick="filterCategory('Personal Care', this)">Personal Care</div>
       <div class="chip" onclick="filterCategory('Home Essentials', this)">Home Essentials</div>
-      <div class="chip" onclick="filterCategory('Health & Wellness', this)">Health & Wellness</div>
+      <div class="chip" onclick="filterCategory('Sports', this)">Sports</div>
       <div class="chip" onclick="filterCategory('Eco Products', this)">Eco Products</div>
     </div>
   </header>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 
   <main class="products" id="product-list">
-    <!-- 8 Updated Product Cards -->
-    <div class="product-card" data-category="Groceries" data-name="Fresh Veggies">
-      <span class="eco-label">100% Organic</span>
-      <img src="images/logo.jpg" alt="Fresh Veggies">
-      <div class="product-content">
-        <h3>Fresh Veggies</h3>
-        <div class="carbon-badge">Carbon: 12%</div>
-        <div class="features">Packed with freshness | Recyclable Packaging</div>
-        <div class="price">₹150</div>
-      </div>
-    </div>
 
-    <div class="product-card" data-category="Eco Products" data-name="Reusable Bottle">
-      <span class="eco-label">Save 5 kg Plastic</span>
-      <img src="images/logo.jpg" alt="Reusable Bottle">
-      <div class="product-content">
-        <h3>Reusable Bottle</h3>
-        <div class="carbon-badge">Carbon: 2%</div>
-        <div class="features">BPA Free | Long-lasting Stainless Steel</div>
-        <div class="price">₹99</div>
-      </div>
-    </div>
+    <div class="product-card" data-category="Personal Care" data-name="Shampoo" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">♻️ Paraben-Free</span>
+  <span class="discount-label">Refill & Save ₹10</span>
+  <span class="green-credit">+5 Green Credits</span>
 
-    <div class="product-card" data-category="Home Essentials" data-name="Eco Detergent">
-      <span class="eco-label">Plant-based Formula</span>
-      <img src="images/logo.jpg" alt="Eco Detergent">
-      <div class="product-content">
-        <h3>Eco Detergent</h3>
-        <div class="carbon-badge">Carbon: 5%</div>
-        <div class="features">No Harsh Chemicals | Refill Available</div>
-        <div class="price">₹120</div>
-      </div>
-    </div>
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/shampoos.glb" 
+      alt="Herbal Shampoo"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
 
-    <div class="product-card" data-category="Personal Care" data-name="Herbal Shampoo">
-      <span class="eco-label">Paraben-Free</span>
-      <img src="images/logo.jpg" alt="Herbal Shampoo">
-      <div class="product-content">
-        <h3>Herbal Shampoo</h3>
-        <div class="carbon-badge">Carbon: 8%</div>
-        <div class="features">Made with Aloe & Neem | Eco-Pack</div>
-        <div class="price">₹180</div>
-      </div>
-    </div>
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Herbal Shampoo</h3>
+    <div class="carbon-badge">Carbon: 8%</div>
+    <div class="features">Made with Aloe & Neem | Eco-Pack</div>
+    <div class="price">₹150</div>
 
-    <div class="product-card" data-category="Health & Wellness" data-name="Organic Tea">
-      <span class="eco-label">Fair Trade</span>
-      <img src="images/logo.jpg" alt="Organic Tea">
-      <div class="product-content">
-        <h3>Organic Tea</h3>
-        <div class="carbon-badge">Carbon: 3%</div>
-        <div class="features">Boost Immunity | Eco-friendly box</div>
-        <div class="price">₹200</div>
-      </div>
-    </div>
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="60, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 60% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
 
-    <div class="product-card" data-category="Groceries" data-name="Fruit Basket">
-      <span class="eco-label">Farm to Door</span>
-      <img src="images/logo.jpg" alt="Fruit Basket">
-      <div class="product-content">
-        <h3>Fruit Basket</h3>
-        <div class="carbon-badge">Carbon: 9%</div>
-        <div class="features">Fresh Harvest | Returnable Box</div>
-        <div class="price">₹250</div>
-      </div>
-    </div>
+ <div class="product-card" data-category="Personal Care" data-name="Face Wash" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">🌿  100% Natural</span>
+  <span class="discount-label">Refill & Save ₹3</span>
+  <span class="green-credit">+3 Green Credits</span>
 
-    <div class="product-card" data-category="Home Essentials" data-name="Coconut Scrub Pads">
-      <span class="eco-label">Zero Plastic</span>
-      <img src="images/logo.jpg" alt="Coconut Scrub Pads">
-      <div class="product-content">
-        <h3>Coconut Scrub Pads</h3>
-        <div class="carbon-badge">Carbon: 1%</div>
-        <div class="features">Biodegradable | Durable & Natural</div>
-        <div class="price">₹70</div>
-      </div>
-    </div>
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/facewash.glb" 
+      alt="Herbal Face Wash"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
 
-    <div class="product-card" data-category="Personal Care" data-name="Bamboo Toothbrush">
-      <span class="eco-label">Compostable Handle</span>
-      <img src="images/logo.jpg" alt="Bamboo Toothbrush">
-      <div class="product-content">
-        <h3>Bamboo Toothbrush</h3>
-        <div class="carbon-badge">Carbon: 2%</div>
-        <div class="features">Smooth Bristles | 100% Biodegradable</div>
-        <div class="price">₹50</div>
-      </div>
-    </div>
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Garnier Face Wash</h3>
+    <div class="carbon-badge">Carbon: 2%</div>
+    <div class="features">Soap-Free Formula | Gentle Exfoliation | Biodegradable Tube</div>
+    <div class="price">₹100</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="50, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 50% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+ <div class="product-card" data-category="Personal Care" data-name="Perfume" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">💧 Water-Conscious Formula</span>
+  <span class="green-credit">+1 Green Credits</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/cream.glb" 
+      alt="Herbal Body Cream"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Men's Perfume</h3>
+    <div class="carbon-badge">Carbon: 12%</div>
+    <div class="features">Alcohol-Free | Long-Lasting | Water-Conscious Formula</div>
+    <div class="price">₹199</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="20, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 20% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+ <div class="product-card" data-category="Personal Care" data-name="Serum" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">🚫 No Microplastics</span>
+    <span class="discount-label">Refill & Save ₹2</span>
+  <span class="green-credit">+4 Green Credits</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/serum.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Serum</h3>
+    <div class="carbon-badge">Carbon: 4%</div>
+    <div class="features">No Microplastics | Fast Absorbing | Glass Dropper Bottle</div>
+    <div class="price">₹350</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="74, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 74% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+    <div class="product-card" data-category="Sports" data-name="Badminton" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">Eco-Friendly</span>
+  <span class="green-credit">+2 Green Credits</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/volleyball.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Serum</h3>
+    <div class="carbon-badge">Carbon: 8%</div>
+    <div class="features">Eco-Friendly Frame | Low carbon Manufacturing</div>
+    <div class="price">₹1200</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="92, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 92% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+   <div class="product-card" data-category="Sports" data-name="Bat" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">Sustainably Sourced</span>
+    <span class="discount-label">Natural Grip</span>
+  <span class="green-credit">Minimal Eco Packaging</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/bat.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Cricket Bat</h3>
+    <div class="carbon-badge">Carbon: 10%</div>
+    <div class="features">Sustainably Sourced | Natural Grip</div>
+    <div class="price">₹999</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="70, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 70% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="product-card" data-category="Sports" data-name="chess" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">FSC Certified Wood</span>
+    <span class="discount-label">Upcycled Materials</span>
+  <span class="green-credit">+5 Green Credits</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/chess.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Chess Board</h3>
+    <div class="carbon-badge">Carbon: 7%</div>
+    <div class="features">Handcrafted | Upcycled Materials</div>
+    <div class="price">₹1500</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="93, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 93% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+ <div class="product-card" data-category="Home Essentials" data-name="steamer" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">100% Recyclable Steel</span>
+    <span class="discount-label">Energy Efficient</span>
+  <span class="green-credit">Designed for longevity</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/steamer.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Steel Steamer</h3>
+    <div class="carbon-badge">Carbon: 3%</div>
+    <div class="features">100% Recyclable | Energy Efficient</div>
+    <div class="price">₹950</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="97, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 97% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+ <div class="product-card" data-category="Home Essentials" data-name="Kettle" onclick="location.href='item.html'">
+  <!-- Stylish Labels -->
+  <span class="eco-label">Auto Shut-off</span>
+    <span class="discount-label">Reduce Carbon</span>
+  <span class="green-credit">Recyclable Materials</span>
+
+  <!-- 3D Model -->
+  <div class="model-container">
+    <model-viewer 
+      src="images/kettle.glb" 
+      alt="Herbal Serum"
+      auto-rotate 
+      camera-controls 
+      ar 
+      auto-rotate-delay="0"
+      shadow-intensity="1"
+      camera-orbit="90deg 75deg 2.5m"
+      exposure="1"
+      background-color="#f9fff9">
+    </model-viewer>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-content">
+    <h3>Kettle</h3>
+    <div class="carbon-badge">Carbon: 5%</div>
+    <div class="features">Power Saving | Auto Shut-off</div>
+    <div class="price">₹1350</div>
+
+    <div class="green-breakdown">
+  <svg class="green-pie" viewBox="0 0 45 40">
+    <circle class="bg" cx="18" cy="18" r="16"></circle>
+    <circle class="organic" cx="18" cy="18" r="16" stroke-dasharray="74, 100"></circle>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="center-label">100%</text>
+  </svg>
+  <div class="labels">
+    <div><span class="dot organic-dot"></span> 74% Carbon Free</div>
+  </div>
+</div>
+  </div>
+</div>
+
   </main>
 
 
@@ -300,6 +783,18 @@
         const match = category === 'All' || card.dataset.category === category;
         card.style.display = match ? 'block' : 'none';
       });
+    }
+
+    function showLogoutConfirm() {
+      document.getElementById('logoutModal').style.display = 'flex';
+    }
+
+    function closeLogoutModal() {
+      document.getElementById('logoutModal').style.display = 'none';
+    }
+
+    function confirmLogout() {
+      window.location.href = 'index.html';
     }
   </script>
 </body>

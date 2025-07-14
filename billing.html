@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco-Friendly Shampoo - Secure Checkout</title>
+  <!-- Google Fonts: Inter for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-green: #28a745; /* A slightly brighter, more vibrant green */
+      --primary-green-dark: #1e7e34;
+      --primary-green-light: #d4edda; /* Lighter shade for backgrounds */
+      --accent-blue: #007bff; /* For offers, a clean blue */
+      --accent-blue-light: #e7f3ff;
+      --text-dark: #343a40;
+      --text-medium: #6c757d;
+      --bg-light: #f8f9fa; /* Very light gray background */
+      --white: #ffffff;
+      --border-radius-lg: 12px;
+      --border-radius-md: 8px;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f0fdf4;
+      margin: 0;
+      padding: 40px 20px; /* More padding on top/bottom */
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align to top */
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px; /* Slightly wider container */
+      background-color: var(--white);
+      padding: 35px 45px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 2.5fr 1.5fr; /* Adjusted column ratio */
+      gap: 40px; /* Increased gap */
+    }
+
+    h1 {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--primary-green-dark);
+      margin-bottom: 25px; /* Adjusted margin after removing description */
+      font-size: 2.2em; /* Larger heading */
+      font-weight: 700;
+    }
+
+    .section {
+      margin-bottom: 30px; /* Increased margin */
+      padding: 25px; /* Increased padding */
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      background-color: var(--white); /* Sections are white */
+      box-shadow: var(--shadow-sm); /* Subtle shadow for sections */
+    }
+
+    .section h3 {
+      margin: 0 0 20px; /* Increased margin */
+      color: var(--primary-green);
+      border-bottom: 2px solid var(--primary-green-light);
+      padding-bottom: 10px;
+      font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 12px; /* Increased gap */
+      font-weight: 600;
+    }
+
+    .section h3 svg {
+      color: var(--primary-green-dark);
+    }
+
+    /* Styles for the collapsible header */
+    .collapsible-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 20px; /* Increased margin */
+      color: var(--primary-green);
+      border-bottom: 2px solid var(--primary-green-light);
+      padding-bottom: 10px;
+      font-size: 1.4em;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .collapsible-header:hover {
+      color: var(--primary-green-dark);
+    }
+
+    .collapsible-header .icon {
+      transition: transform 0.3s ease;
+      color: var(--primary-green-dark);
+    }
+
+    .collapsible-header.active .icon {
+      transform: rotate(90deg);
+    }
+
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out; /* Smoother transition */
+    }
+
+    .collapsible-content.show {
+      max-height: 600px; /* Increased max-height for content */
+      transition: max-height 0.5s ease-in;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* Increased margin */
+    }
+
+    label {
+      font-weight: 500; /* Slightly lighter font weight */
+      margin-bottom: 10px; /* Increased margin */
+      display: block;
+      color: var(--text-dark);
+      font-size: 0.95em;
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 14px; /* Increased padding */
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      font-size: 1em;
+      box-sizing: border-box;
+      background-color: var(--white);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.25); /* Stronger focus shadow */
+      outline: none;
+    }
+
+    .radio-options {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .radio-options label {
+      padding: 15px 25px; /* Increased padding */
+      background-color: var(--bg-light);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+      font-weight: 500;
+      color: var(--text-dark);
+      font-size: 1.05em;
+    }
+
+    .radio-options label:hover {
+        border-color: var(--primary-green-light);
+        background-color: #f0f0f0;
+    }
+
+    .radio-options input[type="radio"] {
+      display: none;
+    }
+
+    .radio-options input[type="radio"]:checked + label {
+      background-color: var(--primary-green-light);
+      border-color: var(--primary-green);
+      font-weight: 600;
+      color: var(--primary-green-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .details-section {
+      margin-top: 25px; /* Increased margin */
+      padding: 20px; /* Increased padding */
+      background-color: var(--primary-green-light);
+      border-radius: var(--border-radius-md);
+      border: 1px dashed var(--primary-green);
+    }
+
+    .details-section label {
+      margin-top: 15px; /* Increased margin */
+    }
+
+    .price-summary {
+      background-color: #e0ffe0; /* A very light green for summary */
+      padding: 25px; /* Increased padding */
+      border-radius: var(--border-radius-md);
+      font-size: 1.1em;
+      margin-top: 20px;
+      border: 1px solid var(--primary-green-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .price-summary .line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px; /* Increased margin */
+    }
+
+    .price-summary .line span:first-child {
+        color: var(--text-medium);
+    }
+    .price-summary .line span:last-child {
+        font-weight: 500;
+        color: var(--text-dark);
+    }
+
+    .price-summary .line.total {
+      border-top: 2px dashed var(--primary-green);
+      padding-top: 20px; /* Increased padding */
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 1.3em;
+      color: var(--primary-green-dark);
+    }
+
+    .appreciation {
+      margin-top: 20px;
+      background: #f0fff4; /* Light green background */
+      padding: 18px; /* Increased padding */
+      border-left: 6px solid var(--primary-green); /* Thicker border */
+      border-radius: var(--border-radius-md);
+      font-style: italic;
+      color: var(--primary-green-dark);
+      font-size: 1em;
+      display: flex;
+      align-items: flex-start; /* Align icon to top of text */
+      gap: 12px;
+      line-height: 1.5;
+    }
+
+    .appreciation svg {
+      color: var(--primary-green);
+      font-size: 1.2em;
+      flex-shrink: 0; /* Prevent icon from shrinking */
+      margin-top: 2px; /* Slight adjustment for visual alignment */
+    }
+
+    .bank-offers {
+      margin-top: 30px;
+      padding: 25px;
+      background-color: var(--accent-blue-light);
+      border-left: 6px solid var(--accent-blue);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bank-offers h4 {
+      margin-top: 0;
+      color: var(--accent-blue);
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .bank-offers ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .bank-offers li {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95em;
+    }
+
+    .bank-offers li svg {
+      color: var(--accent-blue);
+      font-size: 1.1em;
+    }
+
+    .btn {
+      grid-column: 1 / -1;
+      background-color: var(--primary-green);
+      color: white;
+      padding: 18px; /* Increased padding */
+      border: none;
+      width: 100%;
+      font-size: 1.2em; /* Larger font */
+      border-radius: var(--border-radius-lg); /* Larger radius */
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); /* Button shadow */
+    }
+
+    .btn:hover {
+      background-color: var(--primary-green-dark);
+      transform: translateY(-3px); /* More pronounced lift */
+      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+    }
+    .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 10px rgba(40, 167, 69, 0.2);
+    }
+
+    /* Right column for Order Summary and Offers */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Styles for the custom success message box */
+    .success-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it's on top */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .success-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .success-message-box {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      transform: scale(0.8); /* Initial scale for animation */
+      transition: transform 0.3s ease;
+      max-width: 350px;
+      width: 90%;
+    }
+
+    .success-overlay.show .success-message-box {
+      transform: scale(1); /* Scale up when shown */
+    }
+
+    .success-icon {
+      font-size: 4em; /* Large checkmark icon */
+      color: var(--primary-green);
+      margin-bottom: 20px;
+      animation: bounceIn 0.6s ease-out; /* Animation for the icon */
+    }
+
+    .success-text {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--primary-green-dark);
+      margin-bottom: 10px;
+    }
+
+    .order-status {
+      font-size: 1.1em;
+      color: var(--text-medium);
+      margin-bottom: 0;
+    }
+
+    /* Keyframe animation for the icon */
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .container {
+            grid-template-columns: 1fr; /* Single column layout on medium screens */
+            padding: 30px;
+            gap: 30px;
+        }
+        h1, .btn {
+            grid-column: auto;
+        }
+        body {
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8em;
+        }
+        .section {
+            padding: 15px;
+        }
+        .section h3, .collapsible-header {
+            font-size: 1.2em;
+        }
+        .radio-options label {
+            padding: 12px 15px;
+            font-size: 0.9em;
+        }
+        .price-summary, .bank-offers {
+            padding: 15px;
+            font-size: 0.95em;
+        }
+        .price-summary .line.total {
+            font-size: 1.1em;
+        }
+        .btn {
+            padding: 14px;
+            font-size: 1.05em;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Secure Checkout for Eco-Friendly Shampoo</h1>
+    <!-- Removed product-description paragraph -->
+
+    <div class="main-content">
+      <!-- Product Details -->
+      <div class="section">
+        <h3><i class="fas fa-box"></i> Product Details</h3>
+        <ul>
+          <li><strong>Name:</strong> Eco-Friendly Nourishing Shampoo</li>
+          <li><strong>Volume:</strong> 300ml</li>
+          <li><strong>Key Ingredients:</strong> Organic Argan Oil, Aloe Vera, Green Tea Extract</li>
+          <li><strong>Hair Type:</strong> Suitable for all hair types, especially dry and dull hair</li>
+          <li><strong>Benefits:</strong> Nourishes, strengthens, adds shine, reduces frizz</li>
+          <li><strong>Certifications:</strong> Cruelty-Free, Vegan, Paraben-Free, Sulfate-Free</li>
+        </ul>
+      </div>
+
+      <!-- Delivery Address -->
+      <div class="section">
+        <div class="collapsible-header" onclick="toggleCollapsible('addressDetails', this)">
+          <h3><i class="fas fa-map-marker-alt"></i> Delivery Address</h3>
+          <i class="fas fa-chevron-right icon"></i>
+        </div>
+        <div id="addressDetails" class="collapsible-content">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" rows="3" placeholder="Street, City, State, Pincode" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" placeholder="9876543210" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recycle Bottle Option -->
+      <div class="section">
+        <h3><i class="fas fa-recycle"></i> Replace Old Bottle (Get Discount)</h3>
+        <div class="form-group">
+          <label for="recycleSize">Select Replace Bottle Size</label>
+          <select id="recycleSize" onchange="updatePrice()">
+            <option value="0">None</option>
+            <option value="2">500ml - ₹2 off</option>
+            <option value="3">750ml - ₹3 off</option>
+            <option value="4">1L - ₹4 off</option>
+            <option value="5">2L - ₹5 off</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="recycleQty">How Many Recycled Bottles?</label>
+          <input type="number" id="recycleQty" value="1" min="0" onchange="updatePrice()">
+        </div>
+        <div class="appreciation" id="appreciationMsg" style="display: none;">
+          <i class="fas fa-leaf"></i>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="section">
+        <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+        <div class="radio-options">
+          <input type="radio" name="payment" id="cod" value="cod" checked onclick="showPaymentSection('none')">
+          <label for="cod">COD</label>
+
+          <input type="radio" name="payment" id="card" value="card" onclick="showPaymentSection('card')">
+          <label for="card">Card</label>
+
+          <input type="radio" name="payment" id="upi" value="upi" onclick="showPaymentSection('upi')">
+          <label for="upi">UPI</label>
+        </div>
+
+        <div id="cardDetails" class="hidden details-section">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" id="expiryDate" placeholder="MM/YY">
+          <label for="cvv">CVV</label>
+          <input type="number" id="cvv" placeholder="123">
+        </div>
+
+        <div id="upiDetails" class="hidden details-section">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" placeholder="example@upi">
+        </div>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <!-- Order Summary -->
+      <div class="section">
+        <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+        <div class="form-group">
+          <label for="quantity">Quantity of Eco-Friendly Shampoo</label>
+          <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+        </div>
+        <div class="price-summary">
+          <div class="line"><span>Price (per unit)</span><span>₹149</span></div>
+          <div class="line"><span>Number of items</span><span id="qtyDisplay">1</span></div>
+          <div class="line"><span>Recycle Discount</span><span>- ₹<span id="discountDisplay">0</span></span></div>
+          <div class="line total"><span>Total Amount</span><span>₹<span id="totalPrice">149</span></span></div>
+        </div>
+      </div>
+
+      <!-- Bank Offers -->
+      <div class="bank-offers">
+        <h4><i class="fas fa-tags"></i> Available Bank Offers:</h4>
+        <ul>
+          <li><i class="fas fa-credit-card"></i> ICICI Credit Card: Flat ₹10 Off</li>
+          <li><i class="fas fa-credit-card"></i> HDFC Debit Card: ₹5 Cashback</li>
+          <li><i class="fas fa-university"></i> Axis Bank: 2% Extra Discount</li>
+          <li><i class="fas fa-mobile-alt"></i> UPI: ₹3 Instant Cashback</li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn" onclick="makePayment()">Make Payment</button>
+  </div>
+
+  <!-- Custom Success Message Overlay -->
+  <div id="successMessageOverlay" class="success-overlay hidden">
+    <div class="success-message-box">
+      <i class="fas fa-check-circle success-icon"></i>
+      <p class="success-text">Payment Successful!</p>
+      <p class="order-status">Your order has been placed.</p>
+    </div>
+  </div>
+
+  <script>
+    const basePrice = 149; // Price per Eco-Friendly Shampoo
+
+    function toggleCollapsible(contentId, headerElement) {
+      const content = document.getElementById(contentId);
+      const icon = headerElement.querySelector('.icon');
+      
+      headerElement.classList.toggle('active');
+      if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        icon.style.transform = 'rotate(0deg)'; // Reset icon rotation
+      } else {
+        content.classList.add('show');
+        icon.style.transform = 'rotate(90deg)'; // Rotate icon
+      }
+    }
+
+    function showPaymentSection(method) {
+      document.getElementById('cardDetails').classList.add('hidden');
+      document.getElementById('upiDetails').classList.add('hidden');
+
+      if (method === 'card') {
+        document.getElementById('cardDetails').classList.remove('hidden');
+      } else if (method === 'upi') {
+        document.getElementById('upiDetails').classList.remove('hidden');
+      }
+    }
+
+    function updatePrice() {
+      const qty = parseInt(document.getElementById('quantity').value) || 1;
+      const recycleQty = parseInt(document.getElementById('recycleQty').value) || 0;
+      const discountPerUnit = parseInt(document.getElementById('recycleSize').value) || 0;
+      const totalDiscount = discountPerUnit * recycleQty;
+
+      // Ensure quantity is at least 1
+      if (qty < 1) {
+        document.getElementById('quantity').value = 1;
+      }
+      
+      // Ensure recycle quantity is non-negative
+      if (recycleQty < 0) {
+        document.getElementById('recycleQty').value = 0;
+      }
+
+      const appreciationMessages = {
+        2: 'Fantastic! By recycling a 500ml bottle, you help save 0.5 kg of CO2 emissions and reduce plastic waste!',
+        3: 'Great effort! Recycling a 750ml bottle prevents 0.75 kg of plastic waste from landfills and conserves resources!',
+        4: 'Wow! By recycling a 1L bottle, you contribute to reducing 1.0 kg of carbon emissions and promote a circular economy!',
+        5: 'Amazing! Your 2L bottle recycling helps cut down 2.0 kg of plastic waste and saves significant energy!',
+      };
+
+      // Appreciation Message Logic
+      const appDiv = document.getElementById('appreciationMsg');
+      const appSpan = appDiv.querySelector('span');
+      if (appreciationMessages[discountPerUnit] && recycleQty > 0) {
+        appSpan.textContent = appreciationMessages[discountPerUnit];
+        appDiv.style.display = 'flex'; // Use flex to align icon and text
+      } else {
+        appDiv.style.display = 'none';
+      }
+
+      const total = basePrice * qty - totalDiscount;
+      document.getElementById('qtyDisplay').textContent = qty;
+      document.getElementById('discountDisplay').textContent = totalDiscount;
+      document.getElementById('totalPrice').textContent = total >= 0 ? total : 0;
+    }
+
+    function makePayment() {
+      const fullName = document.getElementById('fullName').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const phoneNumber = document.getElementById('phoneNumber').value.trim();
+
+      if (!fullName || !address || !phoneNumber) {
+        alert('Please fill in all delivery address details before proceeding!');
+        // Automatically open the delivery address section if not filled
+        const addressSectionContent = document.getElementById('addressDetails');
+        const addressHeader = document.querySelector('.collapsible-header');
+        if (!addressSectionContent.classList.contains('show')) {
+            toggleCollapsible('addressDetails', addressHeader);
+        }
+        return;
+      }
+
+      const selectedPaymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      let paymentDetailsValid = true;
+
+      if (selectedPaymentMethod === 'card') {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const expiryDate = document.getElementById('expiryDate').value.trim();
+        const cvv = document.getElementById('cvv').value.trim();
+        if (!cardNumber || !expiryDate || !cvv) {
+          alert('Please fill in all card details.');
+          paymentDetailsValid = false;
+        }
+      } else if (selectedPaymentMethod === 'upi') {
+        const upiId = document.getElementById('upiId').value.trim();
+        if (!upiId) {
+          alert('Please enter your UPI ID.');
+          paymentDetailsValid = false;
+        }
+      }
+
+      if (paymentDetailsValid) {
+        const successOverlay = document.getElementById('successMessageOverlay');
+        successOverlay.classList.add('show');
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          successOverlay.classList.remove('show');
+        }, 3000);
+      }
+    }
+
+    // Initialize price calculation on page load
+    updatePrice();
+  </script>
+</body>
+</html>

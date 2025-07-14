@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco-Friendly Shampoo - Secure Checkout</title>
+  <!-- Google Fonts: Inter for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-green: #28a745; /* A slightly brighter, more vibrant green */
+      --primary-green-dark: #1e7e34;
+      --primary-green-light: #d4edda; /* Lighter shade for backgrounds */
+      --accent-blue: #007bff; /* For offers, a clean blue */
+      --accent-blue-light: #e7f3ff;
+      --text-dark: #343a40;
+      --text-medium: #6c757d;
+      --bg-light: #f8f9fa; /* Very light gray background */
+      --white: #ffffff;
+      --border-radius-lg: 12px;
+      --border-radius-md: 8px;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: var(--bg-light);
+      margin: 0;
+      padding: 40px 20px; /* More padding on top/bottom */
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align to top */
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px; /* Slightly wider container */
+      background-color: var(--white);
+      padding: 35px 45px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 2.5fr 1.5fr; /* Adjusted column ratio */
+      gap: 40px; /* Increased gap */
+    }
+
+    h1 {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--primary-green-dark);
+      margin-bottom: 25px; /* Adjusted margin after removing description */
+      font-size: 2.2em; /* Larger heading */
+      font-weight: 700;
+    }
+
+    .section {
+      margin-bottom: 30px; /* Increased margin */
+      padding: 25px; /* Increased padding */
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      background-color: var(--white); /* Sections are white */
+      box-shadow: var(--shadow-sm); /* Subtle shadow for sections */
+    }
+
+    .section h3 {
+      margin: 0 0 20px; /* Increased margin */
+      color: var(--primary-green);
+      border-bottom: 2px solid var(--primary-green-light);
+      padding-bottom: 10px;
+      font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 12px; /* Increased gap */
+      font-weight: 600;
+    }
+
+    .section h3 svg {
+      color: var(--primary-green-dark);
+    }
+
+    /* Styles for the section headers that act as buttons */
+    .section-button-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: center; /* Center content horizontally */
+      align-items: center;
+      padding: 15px 25px; /* Generous padding for button feel */
+      background-color: var(--primary-green); /* Green background for buttons */
+      color: var(--white); /* White text */
+      border-radius: var(--border-radius-md);
+      font-size: 1.2em; /* Slightly larger font */
+      font-weight: 600;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2); /* Subtle shadow */
+      margin-bottom: 20px; /* Space below the button */
+    }
+
+    .section-button-header:hover {
+      background-color: var(--primary-green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    .section-button-header:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 5px rgba(40, 167, 69, 0.1);
+    }
+
+    .section-button-header svg {
+      color: var(--white); /* White icon */
+      margin-right: 10px; /* Space between icon and text */
+    }
+
+    /* Keep collapsible header for Delivery Address if it remains collapsible */
+    .collapsible-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 20px; /* Increased margin */
+      color: var(--primary-green);
+      border-bottom: 2px solid var(--primary-green-light);
+      padding-bottom: 10px;
+      font-size: 1.4em;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .collapsible-header:hover {
+      color: var(--primary-green-dark);
+    }
+
+    .collapsible-header .icon {
+      transition: transform 0.3s ease;
+      color: var(--primary-green-dark);
+    }
+
+    .collapsible-header.active .icon {
+      transform: rotate(90deg);
+    }
+
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out; /* Smoother transition */
+    }
+
+    .collapsible-content.show {
+      max-height: 600px; /* Increased max-height for content */
+      transition: max-height 0.5s ease-in;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* Increased margin */
+    }
+
+    label {
+      font-weight: 500; /* Slightly lighter font weight */
+      margin-bottom: 10px; /* Increased margin */
+      display: block;
+      color: var(--text-dark);
+      font-size: 0.95em;
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 14px; /* Increased padding */
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      font-size: 1em;
+      box-sizing: border-box;
+      background-color: var(--white);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.25); /* Stronger focus shadow */
+      outline: none;
+    }
+
+    .radio-options {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .radio-options label {
+      padding: 15px 25px; /* Increased padding */
+      background-color: var(--bg-light);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+      font-weight: 500;
+      color: var(--text-dark);
+      font-size: 1.05em;
+    }
+
+    .radio-options label:hover {
+        border-color: var(--primary-green-light);
+        background-color: #f0f0f0;
+    }
+
+    .radio-options input[type="radio"] {
+      display: none;
+    }
+
+    .radio-options input[type="radio"]:checked + label {
+      background-color: var(--primary-green-light);
+      border-color: var(--primary-green);
+      font-weight: 600;
+      color: var(--primary-green-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .details-section {
+      margin-top: 25px; /* Increased margin */
+      padding: 20px; /* Increased padding */
+      background-color: var(--primary-green-light);
+      border-radius: var(--border-radius-md);
+      border: 1px dashed var(--primary-green);
+    }
+
+    .details-section label {
+      margin-top: 15px; /* Increased margin */
+    }
+
+    .price-summary {
+      background-color: #e0ffe0; /* A very light green for summary */
+      padding: 25px; /* Increased padding */
+      border-radius: var(--border-radius-md);
+      font-size: 1.1em;
+      margin-top: 20px;
+      border: 1px solid var(--primary-green-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .price-summary .line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px; /* Increased margin */
+    }
+
+    .price-summary .line span:first-child {
+        color: var(--text-medium);
+    }
+    .price-summary .line span:last-child {
+        font-weight: 500;
+        color: var(--text-dark);
+    }
+
+    .price-summary .line.total {
+      border-top: 2px dashed var(--primary-green);
+      padding-top: 20px; /* Increased padding */
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 1.3em;
+      color: var(--primary-green-dark);
+    }
+
+    .appreciation {
+      margin-top: 20px;
+      background: #f0fff4; /* Light green background */
+      padding: 18px; /* Increased padding */
+      border-left: 6px solid var(--primary-green); /* Thicker border */
+      border-radius: var(--border-radius-md);
+      font-style: italic;
+      color: var(--primary-green-dark);
+      font-size: 1em;
+      display: flex;
+      align-items: flex-start; /* Align icon to top of text */
+      gap: 12px;
+      line-height: 1.5;
+    }
+
+    .appreciation svg {
+      color: var(--primary-green);
+      font-size: 1.2em;
+      flex-shrink: 0; /* Prevent icon from shrinking */
+      margin-top: 2px; /* Slight adjustment for visual alignment */
+    }
+
+    .bank-offers {
+      margin-top: 30px;
+      padding: 25px;
+      background-color: var(--accent-blue-light);
+      border-left: 6px solid var(--accent-blue);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bank-offers h4 {
+      margin-top: 0;
+      color: var(--accent-blue);
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .bank-offers ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .bank-offers li {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95em;
+    }
+
+    .bank-offers li svg {
+      color: var(--accent-blue);
+      font-size: 1.1em;
+    }
+
+    .btn {
+      grid-column: 1 / -1;
+      background-color: var(--primary-green);
+      color: white;
+      padding: 18px; /* Increased padding */
+      border: none;
+      width: 100%;
+      font-size: 1.2em; /* Larger font */
+      border-radius: var(--border-radius-lg); /* Larger radius */
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); /* Button shadow */
+    }
+
+    .btn:hover {
+      background-color: var(--primary-green-dark);
+      transform: translateY(-3px); /* More pronounced lift */
+      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+    }
+    .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 10px rgba(40, 167, 69, 0.2);
+    }
+
+    /* Right column for Order Summary and Offers */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Styles for the custom modal overlays */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it's on top */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      transform: scale(0.8); /* Initial scale for animation */
+      transition: transform 0.3s ease;
+      max-width: 450px; /* Wider for recycle modal */
+      width: 90%;
+      position: relative; /* For close button positioning */
+    }
+
+    .modal-overlay.show .modal-box {
+      transform: scale(1); /* Scale up when shown */
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        color: var(--text-medium);
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+        color: var(--text-dark);
+    }
+
+    .modal-icon {
+      font-size: 4em; /* Large icon */
+      color: var(--primary-green);
+      margin-bottom: 20px;
+      animation: bounceIn 0.6s ease-out; /* Animation for the icon */
+    }
+
+    .modal-title {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--primary-green-dark);
+      margin-bottom: 10px;
+    }
+
+    .modal-text {
+      font-size: 1.1em;
+      color: var(--text-medium);
+      margin-bottom: 0;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .modal-buttons .btn {
+        width: auto;
+        padding: 12px 25px;
+        font-size: 1em;
+        margin-top: 0; /* Override default button margin */
+        box-shadow: none; /* Remove button shadow for modal buttons */
+    }
+
+    .modal-buttons .btn-secondary {
+        background-color: var(--text-medium);
+        box-shadow: none;
+    }
+    .modal-buttons .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+    }
+
+    /* Specific styling for the Wallet Credit Info on main page */
+    .wallet-credit-info {
+        margin-top: 20px;
+        background: #e6f7ff; /* Light blue background */
+        padding: 18px;
+        border-left: 6px solid var(--accent-blue);
+        border-radius: var(--border-radius-md);
+        font-style: italic;
+        color: var(--accent-blue);
+        font-size: 1em;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        line-height: 1.5;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .wallet-credit-info svg {
+        color: var(--accent-blue);
+        font-size: 1.2em;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    /* Specific styling for the Credit Earned Popup */
+    #creditEarnedMessageOverlay .modal-box {
+        background: linear-gradient(135deg, #e0ffe0, #d4edda); /* Green gradient */
+        border: 2px solid var(--primary-green);
+        padding: 50px 30px;
+    }
+
+    #creditEarnedMessageOverlay .modal-icon {
+        color: var(--primary-green-dark);
+        font-size: 5em;
+    }
+
+    #creditEarnedMessageOverlay .modal-title {
+        color: var(--primary-green-dark);
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+
+    #creditEarnedMessageOverlay .modal-text {
+        color: var(--text-dark);
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+
+    /* Keyframe animation for the icon */
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .container {
+          grid-template-columns: 1fr; /* Single column layout on medium screens */
+          padding: 30px;
+          gap: 30px;
+        }
+        h1, .btn {
+          grid-column: auto;
+        }
+        body {
+          padding: 20px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 1.8em;
+        }
+        .section {
+          padding: 15px;
+        }
+        .section h3, .collapsible-header {
+          font-size: 1.2em;
+        }
+        .radio-options label {
+          padding: 12px 15px;
+          font-size: 0.9em;
+        }
+        .price-summary, .bank-offers {
+          padding: 15px;
+          font-size: 0.95em;
+        }
+        .price-summary .line.total {
+          font-size: 1.1em;
+        }
+        .btn {
+          padding: 14px;
+          font-size: 1.05em;
+        }
+        .modal-buttons {
+            flex-direction: column;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Secure Checkout for Eco-Friendly Shampoo</h1>
+    <!-- Removed product-description paragraph -->
+
+    <div class="main-content">
+      <!-- Product Details -->
+      <div class="section">
+        <h3><i class="fas fa-box"></i> Product Details</h3>
+        <ul>
+          <li><strong>Name:</strong> Eco-Friendly Nourishing Shampoo</li>
+          <li><strong>Volume:</strong> 300ml</li>
+          <li><strong>Key Ingredients:</strong> Organic Argan Oil, Aloe Vera, Green Tea Extract</li>
+          <li><strong>Hair Type:</strong> Suitable for all hair types, especially dry and dull hair</li>
+          <li><strong>Benefits:</strong> Nourishes, strengthens, adds shine, reduces frizz</li>
+          <li><strong>Certifications:</strong> Cruelty-Free, Vegan, Paraben-Free, Sulfate-Free</li>
+        </ul>
+      </div>
+
+      <!-- Delivery Address - Now a button-like header -->
+      <div class="section">
+        <div class="section-button-header" onclick="toggleCollapsible('addressDetails', this)">
+          <i class="fas fa-map-marker-alt"></i> Delivery Address
+        </div>
+        <div id="addressDetails" class="collapsible-content">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" rows="3" placeholder="Street, City, State, Pincode" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" placeholder="9876543210" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recycle Old Items Section - Now a button-like header to open modal -->
+      <div class="section">
+        <div class="section-button-header" onclick="openRecycleModal()">
+          <i class="fas fa-recycle"></i> Recycle Old Items (Get Credit)
+        </div>
+        <!-- The content for recycling is now in the modal -->
+      </div>
+
+      <!-- Payment Section -->
+      <div class="section">
+        <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+        <div class="radio-options">
+          <input type="radio" name="payment" id="cod" value="cod" checked onclick="showPaymentSection('none')">
+          <label for="cod">Cash on Delivery</label>
+
+          <input type="radio" name="payment" id="card" value="card" onclick="showPaymentSection('card')">
+          <label for="card">Card</label>
+
+          <input type="radio" name="payment" id="upi" value="upi" onclick="showPaymentSection('upi')">
+          <label for="upi">UPI</label>
+        </div>
+
+        <div id="cardDetails" class="hidden details-section">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" id="expiryDate" placeholder="MM/YY">
+          <label for="cvv">CVV</label>
+          <input type="number" id="cvv" placeholder="123">
+        </div>
+
+        <div id="upiDetails" class="hidden details-section">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" placeholder="example@upi">
+        </div>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <!-- Order Summary -->
+      <div class="section">
+        <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+        <div class="form-group">
+          <label for="quantity">Quantity of Eco-Friendly Shampoo</label>
+          <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+        </div>
+        <div class="price-summary">
+          <div class="line"><span>Price (per unit)</span><span>₹100</span></div>
+          <div class="line"><span>Number of items</span><span id="qtyDisplay">1</span></div>
+          <!-- Recycle Credit to Wallet removed from here -->
+          <div class="line total"><span>Total Amount</span><span>₹<span id="totalPrice">100</span></span></div>
+        </div>
+      </div>
+
+      <!-- Wallet Credit Information - Displays the amount to be credited -->
+      <div class="wallet-credit-info" id="walletCreditInfo" style="display: none;">
+        <i class="fas fa-wallet"></i>
+        <span>₹<span id="walletCreditAmount">0</span> will be credited to your wallet after order delivery.</span>
+      </div>
+
+      <!-- Bank Offers -->
+      <div class="bank-offers">
+        <h4><i class="fas fa-tags"></i> Available Bank Offers:</h4>
+        <ul>
+          <li><i class="fas fa-credit-card"></i> ICICI Credit Card: Flat ₹10 Off</li>
+          <li><i class="fas fa-credit-card"></i> HDFC Debit Card: ₹5 Cashback</li>
+          <li><i class="fas fa-university"></i> Axis Bank: 2% Extra Discount</li>
+          <li><i class="fas fa-mobile-alt"></i> UPI: ₹3 Instant Cashback</li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn" onclick="makePayment()">Make Payment</button>
+  </div>
+
+  <!-- Custom Success Message Overlay (Payment Successful) -->
+  <div id="successMessageOverlay" class="modal-overlay hidden">
+    <div class="modal-box">
+      <i class="fas fa-check-circle modal-icon"></i>
+      <p class="modal-title">Payment Successful!</p>
+      <p class="modal-text">Your order has been placed.</p>
+      <p class="modal-text" id="successCreditText" style="margin-top: 10px; font-weight: 600; color: var(--primary-green-dark);"></p>
+    </div>
+  </div>
+
+  <!-- Recycle Modal Overlay -->
+  <div id="recycleModalOverlay" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeRecycleModal()"><i class="fas fa-times"></i></button>
+      <h3 class="modal-title"><i class="fas fa-recycle"></i> Recycle Old Items</h3>
+      <div class="form-group">
+        <label for="modalItemType">Select Item Type</label>
+        <select id="modalItemType" onchange="populateModalItemSizes(); estimateCredit();">
+          <!-- Item types will be populated by JavaScript -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="modalItemSize">Select Item Size/Weight</label>
+        <select id="modalItemSize" onchange="estimateCredit()">
+          <!-- Item sizes/weights will be populated by JavaScript -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="modalRecycleQty">How Many Items to Recycle?</label>
+        <input type="number" id="modalRecycleQty" value="1" min="0" onchange="estimateCredit()">
+      </div>
+
+      <div class="price-summary" id="estimatedCreditDisplay" style="display: none;">
+        <div class="line"><span>Estimated Recycle Credit</span><span>₹<span id="estimatedCreditValue">0</span></span></div>
+      </div>
+
+      <div class="appreciation" id="modalAppreciationMsg" style="display: none;">
+        <i class="fas fa-leaf"></i>
+        <span></span>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="btn" onclick="applyCreditAndClose()">Apply Credit & Close</button>
+        <button class="btn btn-secondary" onclick="closeRecycleModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Credit Earned Message Overlay -->
+  <div id="creditEarnedMessageOverlay" class="modal-overlay hidden">
+    <div class="modal-box">
+      <i class="fas fa-coins modal-icon"></i> <!-- Coins icon for credit -->
+      <p class="modal-title">Credit Earned!</p>
+      <p class="modal-text" id="earnedCreditText"></p>
+    </div>
+  </div>
+
+
+  <script>
+    const basePrice = 100; // Price per Eco-Friendly Shampoo
+    let recycleCreditAmount = 0; // Global variable to store the recycle credit amount
+
+    // Data structure for recycle items, their credits, and appreciation messages
+    const recycleItems = {
+        "none": {
+            displayName: "Select an Item",
+            sizes: [{ value: "none", text: "Select a size/weight for credit", credit: 0, message: "Select an item and its size/weight to get a credit!" }]
+        },
+        "shampoo": {
+            displayName: "Shampoo Bottle",
+            unit: "ml",
+            sizes: [
+                { value: "500", text: "500ml", credit: 2, message: "Fantastic! By recycling a 500ml shampoo bottle, you help save 0.5 kg of CO2 emissions and reduce plastic waste!" },
+                { value: "750", text: "750ml", credit: 3, message: "Great effort! Recycling a 750ml shampoo bottle prevents 0.75 kg of plastic waste from landfills and conserves resources!" },
+                { value: "1000", text: "1L", credit: 4, message: "Wow! By recycling a 1L shampoo bottle, you contribute to reducing 1.0 kg of carbon emissions and promote a circular economy!" },
+                { value: "2000", text: "2L", credit: 5, message: "Amazing! Your 2L shampoo bottle recycling helps cut down 2.0 kg of plastic waste and saves significant energy!" }
+            ]
+        },
+        "oil": {
+            displayName: "Oil Container",
+            unit: "L",
+            sizes: [
+                { value: "0.5", text: "500ml", credit: 1, message: "Excellent! Recycling a 500ml oil container helps reduce plastic pollution and conserves natural resources." },
+                { value: "1", text: "1L", credit: 2, message: "Superb! Your 1L oil container recycling effort significantly reduces landfill waste and promotes sustainability." },
+                { value: "2", text: "2L", credit: 3, message: "Outstanding! By recycling a 2L oil container, you're making a big impact on reducing environmental footprint." },
+                { value: "5", text: "5L", credit: 5, message: "Incredible! Recycling a 5L oil container is a massive step towards a cleaner, greener planet!" }
+            ]
+        },
+        "perfume": {
+            displayName: "Perfume Bottle",
+            unit: "ml",
+            sizes: [
+                { value: "50", text: "50ml", credit: 1, message: "Wonderful! Recycling a 50ml perfume bottle helps conserve glass and reduces the need for new raw materials." },
+                { value: "100", text: "100ml", credit: 2, message: "Brilliant! Your 100ml perfume bottle recycling contributes to less waste and more resource efficiency." }
+            ]
+        },
+        "serum": {
+            displayName: "Serum Bottle",
+            unit: "ml",
+            sizes: [
+                { value: "30", text: "30ml", credit: 0.5, message: "Every bit counts! Recycling a 30ml serum bottle helps keep small plastics out of our environment." },
+                { value: "50", text: "50ml", credit: 1, message: "Great job! Recycling a 50ml serum bottle shows your commitment to a sustainable future." }
+            ]
+        },
+        "ghee": {
+            displayName: "Ghee Container",
+            unit: "L",
+            sizes: [
+                { value: "0.5", text: "500ml", credit: 2, message: "Fantastic! Recycling a 500ml ghee container supports the reuse of metal, a valuable resource." },
+                { value: "1", text: "1L", credit: 3, message: "Excellent! Your 1L ghee container recycling helps reduce energy consumption in manufacturing." },
+                { value: "2", text: "2L", credit: 4, message: "Superb! By recycling a 2L ghee container, you're actively participating in resource conservation." },
+                { value: "5", text: "5L", credit: 6, message: "Outstanding! Recycling a 5L ghee container makes a significant positive impact on the environment." }
+            ]
+        },
+        "books": {
+            displayName: "Old Books",
+            unit: "kg",
+            sizes: [
+                { value: "1", text: "1kg", credit: 1, message: "Thank you! Recycling 1kg of old books saves trees and reduces landfill waste." },
+                { value: "5", text: "5kg", credit: 5, message: "Amazing! Recycling 5kg of old books makes a huge difference in paper conservation!" },
+                { value: "10", text: "10kg", credit: 10, message: "Incredible! Your effort in recycling 10kg of old books is a monumental step towards sustainability!" }
+            ]
+        },
+        "kettle": {
+            displayName: "Steel Kettle",
+            unit: "unit", // Or some other appropriate unit
+            sizes: [
+                { value: "1", text: "1 unit", credit: 7, message: "Excellent! Recycling a steel kettle helps recover valuable metals and reduces mining impact." }
+            ]
+        }
+    };
+
+    /**
+     * Populates the item type dropdown within the recycle modal.
+     */
+    function populateModalItemTypes() {
+        const selectElement = document.getElementById('modalItemType');
+        selectElement.innerHTML = ''; // Clear existing options
+
+        for (const key in recycleItems) {
+            const item = recycleItems[key];
+            let option = document.createElement('option');
+            option.value = key;
+            option.textContent = item.displayName;
+            selectElement.appendChild(option);
+        }
+        // After populating item types, populate the sizes for the initially selected type
+        populateModalItemSizes();
+    }
+
+    /**
+     * Populates the item size/weight dropdown within the recycle modal based on the selected item type.
+     */
+    function populateModalItemSizes() {
+        const itemTypeSelect = document.getElementById('modalItemType');
+        const itemSizeSelect = document.getElementById('modalItemSize');
+        const selectedItemTypeKey = itemTypeSelect.value;
+        const selectedItem = recycleItems[selectedItemTypeKey];
+
+        itemSizeSelect.innerHTML = ''; // Clear existing options
+
+        if (selectedItem && selectedItem.sizes) {
+            selectedItem.sizes.forEach(size => {
+                let option = document.createElement('option');
+                option.value = size.value;
+                option.textContent = `${size.text} - ₹${size.credit} credit`;
+                itemSizeSelect.appendChild(option);
+            });
+        }
+        estimateCredit(); // Estimate credit after sizes are populated
+    }
+
+    /**
+     * Toggles the visibility of a collapsible content section (used for Delivery Address).
+     * @param {string} contentId The ID of the content div to toggle.
+     * @param {HTMLElement} headerElement The header element that was clicked.
+     */
+    function toggleCollapsible(contentId, headerElement) {
+      const content = document.getElementById(contentId);
+      // The icon is not directly inside section-button-header, so we don't need to rotate it
+      
+      headerElement.classList.toggle('active'); // Keep active class for styling if needed
+      if (content.classList.contains('show')) {
+        content.classList.remove('show');
+      } else {
+        content.classList.add('show');
+      }
+    }
+
+    /**
+     * Shows or hides payment detail sections based on the selected method.
+     * @param {string} method The payment method ('none', 'card', 'upi').
+     */
+    function showPaymentSection(method) {
+      document.getElementById('cardDetails').classList.add('hidden');
+      document.getElementById('upiDetails').classList.add('hidden');
+
+      if (method === 'card') {
+        document.getElementById('cardDetails').classList.remove('hidden');
+      } else if (method === 'upi') {
+        document.getElementById('upiDetails').classList.remove('hidden');
+      }
+    }
+
+    /**
+     * Opens the recycle modal and initializes its content.
+     */
+    function openRecycleModal() {
+        const recycleModalOverlay = document.getElementById('recycleModalOverlay');
+        recycleModalOverlay.classList.remove('hidden');
+        recycleModalOverlay.classList.add('show');
+        populateModalItemTypes(); // Populate item types when modal opens
+        // estimateCredit() is called by populateModalItemSizes()
+    }
+
+    /**
+     * Closes the recycle modal.
+     */
+    function closeRecycleModal() {
+        const recycleModalOverlay = document.getElementById('recycleModalOverlay');
+        recycleModalOverlay.classList.remove('show');
+        recycleModalOverlay.classList.add('hidden');
+    }
+
+    /**
+     * Estimates the credit points based on selections in the recycle modal.
+     */
+    function estimateCredit() {
+        const recycleQty = parseInt(document.getElementById('modalRecycleQty').value) || 0;
+        const selectedItemTypeKey = document.getElementById('modalItemType').value;
+        const selectedItemSizeValue = document.getElementById('modalItemSize').value;
+        
+        let creditPerUnit = 0;
+        let appreciationMessage = "";
+
+        const selectedItemType = recycleItems[selectedItemTypeKey];
+        if (selectedItemType && selectedItemType.sizes) {
+            const selectedSize = selectedItemType.sizes.find(size => size.value === selectedItemSizeValue);
+            if (selectedSize) {
+                creditPerUnit = selectedSize.credit;
+                appreciationMessage = selectedSize.message;
+            }
+        }
+
+        const currentEstimatedCredit = creditPerUnit * recycleQty;
+
+        // Ensure recycle quantity is non-negative
+        if (recycleQty < 0) {
+            document.getElementById('modalRecycleQty').value = 0;
+        }
+
+        // Display estimated credit
+        document.getElementById('estimatedCreditValue').textContent = currentEstimatedCredit;
+        document.getElementById('estimatedCreditDisplay').style.display = 'block'; // Show the estimated credit section
+
+        // Appreciation Message Logic for modal
+        const appDiv = document.getElementById('modalAppreciationMsg');
+        const appSpan = appDiv.querySelector('span');
+        if (recycleQty > 0 && selectedItemTypeKey !== "none" && selectedItemSizeValue !== "none") {
+            const itemDisplayName = selectedItemType.displayName;
+            const selectedSizeText = selectedItemType.sizes.find(size => size.value === selectedItemSizeValue)?.text || '';
+            
+            appSpan.textContent = `${appreciationMessage} You're recycling ${recycleQty} ${selectedSizeText} of ${itemDisplayName}.`;
+            appDiv.style.display = 'flex'; // Use flex to align icon and text
+        } else {
+            appDiv.style.display = 'none';
+        }
+    }
+
+    /**
+     * Applies the estimated credit to the global variable and shows the credit earned popup.
+     */
+    function applyCreditAndClose() {
+        recycleCreditAmount = parseInt(document.getElementById('estimatedCreditValue').textContent) || 0;
+        updatePrice(); // Update the main order summary and wallet info on main page
+        closeRecycleModal(); // Close the recycle modal
+        showCreditEarnedMessage(recycleCreditAmount); // Show the new credit earned popup
+    }
+
+    /**
+     * Updates the total price and credit displayed in the main order summary.
+     */
+    function updatePrice() {
+      const qty = parseInt(document.getElementById('quantity').value) || 1;
+      
+      // Ensure quantity is at least 1
+      if (qty < 1) {
+        document.getElementById('quantity').value = 1;
+      }
+      
+      const total = basePrice * qty; // Total is no longer discounted by recycle credit
+      document.getElementById('qtyDisplay').textContent = qty;
+      // Removed creditToWalletDisplay from order summary
+
+      document.getElementById('totalPrice').textContent = total >= 0 ? total : 0;
+
+      // Show/hide wallet credit info on main page
+      const walletInfoDiv = document.getElementById('walletCreditInfo');
+      const walletAmountSpan = document.getElementById('walletCreditAmount');
+      if (recycleCreditAmount > 0) {
+          walletAmountSpan.textContent = recycleCreditAmount;
+          walletInfoDiv.style.display = 'flex'; // Use flex to align icon and text
+      } else {
+          walletInfoDiv.style.display = 'none';
+      }
+    }
+
+    /**
+     * Handles the payment process, including validation and showing a success message.
+     * Replaces alert() with a custom modal for user feedback.
+     */
+    function makePayment() {
+      const fullName = document.getElementById('fullName').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const phoneNumber = document.getElementById('phoneNumber').value.trim();
+
+      // Check delivery address details
+      if (!fullName || !address || !phoneNumber) {
+        showCustomMessage('Please fill in all delivery address details before proceeding!', 'error');
+        // Automatically open the delivery address section if not filled
+        const addressSectionContent = document.getElementById('addressDetails');
+        const addressHeader = document.querySelector('.section-button-header'); // Changed selector
+        if (!addressSectionContent.classList.contains('show')) {
+            toggleCollapsible('addressDetails', addressHeader);
+        }
+        return;
+      }
+
+      const selectedPaymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      let paymentDetailsValid = true;
+
+      // Validate payment details based on selected method
+      if (selectedPaymentMethod === 'card') {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const expiryDate = document.getElementById('expiryDate').value.trim();
+        const cvv = document.getElementById('cvv').value.trim();
+        if (!cardNumber || !expiryDate || !cvv) {
+          showCustomMessage('Please fill in all card details.', 'error');
+          paymentDetailsValid = false;
+        }
+      } else if (selectedPaymentMethod === 'upi') {
+        const upiId = document.getElementById('upiId').value.trim();
+        if (!upiId) {
+          showCustomMessage('Please enter your UPI ID.', 'error');
+          paymentDetailsValid = false;
+        }
+      }
+
+      // If all details are valid, show success message
+      if (paymentDetailsValid) {
+        const successOverlay = document.getElementById('successMessageOverlay');
+        const successCreditText = document.getElementById('successCreditText');
+        
+        if (recycleCreditAmount > 0) {
+            successCreditText.textContent = `₹${recycleCreditAmount} will be credited to your wallet!`;
+        } else {
+            successCreditText.textContent = ''; // Clear text if no credit
+        }
+
+        successOverlay.classList.add('show');
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          successOverlay.classList.remove('show');
+        }, 3000);
+      }
+    }
+
+    /**
+     * Displays a custom message box for errors using the success overlay.
+     * @param {string} message The message to display.
+     * @param {string} type The type of message (e.g., 'success', 'error').
+     */
+    function showCustomMessage(message, type) {
+        const overlay = document.getElementById('successMessageOverlay');
+        const messageBox = overlay.querySelector('.modal-box');
+        const iconElement = messageBox.querySelector('.modal-icon');
+        const titleElement = messageBox.querySelector('.modal-title');
+        const textElement = messageBox.querySelector('.modal-text');
+        const successCreditText = document.getElementById('successCreditText'); // Get the specific element
+
+        // Customize for error message
+        if (type === 'error') {
+            iconElement.className = 'fas fa-exclamation-triangle modal-icon'; // Warning icon
+            iconElement.style.color = '#dc3545'; // Red color
+            titleElement.textContent = 'Error!';
+            titleElement.style.color = '#dc3545';
+            textElement.textContent = message;
+            textElement.style.color = '#6c757d';
+            successCreditText.textContent = ''; // Clear credit text for errors
+        } else { // Default to success (though this function is primarily for errors now)
+            iconElement.className = 'fas fa-check-circle modal-icon';
+            iconElement.style.color = 'var(--primary-green)';
+            titleElement.textContent = 'Payment Successful!';
+            titleElement.style.color = 'var(--primary-green-dark)';
+            textElement.textContent = 'Your order has been placed.';
+            textElement.style.color = 'var(--text-medium)';
+            // The successCreditText will be set by makePayment()
+        }
+
+        overlay.classList.add('show');
+        setTimeout(() => {
+            overlay.classList.remove('show');
+            // Reset to default success styling after hiding
+            iconElement.style.color = 'var(--primary-green)';
+            titleElement.style.color = 'var(--primary-green-dark)';
+            textElement.style.color = 'var(--text-medium)';
+        }, 3000); // Hide after 3 seconds
+    }
+
+    /**
+     * Displays the "Credit Earned" popup with the specified amount.
+     * @param {number} amount The amount of credit earned.
+     */
+    function showCreditEarnedMessage(amount) {
+        const overlay = document.getElementById('creditEarnedMessageOverlay');
+        const earnedCreditText = document.getElementById('earnedCreditText');
+        
+        earnedCreditText.textContent = `You have successfully earned ₹${amount} which will be credited to your wallet!`;
+        
+        overlay.classList.remove('hidden');
+        overlay.classList.add('show');
+
+        setTimeout(() => {
+            overlay.classList.remove('show');
+            overlay.classList.add('hidden');
+        }, 3000); // Hide after 3 seconds
+    }
+
+    // Initialize prices on page load
+    window.onload = function() {
+        updatePrice(); // Initial price update
+    };
+  </script>
+</body>
+</html>
